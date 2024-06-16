@@ -16,3 +16,40 @@
 ### run js
 
 - node index.js
+
+## section2
+
+### 型検査
+- ts -> (tsc) -> js -> (js engine) -> 機械語
+- tsc: 静的型付け
+- js engine: 動的型付け
+
+### number型について
+- tsでは他の言語とは違って、`float`型の値も`number`型として扱う
+
+### 型注釈 vs 型推論
+- 型注釈: `const a: string`のように明示的に型定義するタイプ
+- 型推論: `const a = 'test'`のように`'test'`を代入することにより、vscodeに組み込まれているtsコンパイラが肩を推論してくれるタイプ
+- 基本的には`型推論`を使うことにして、`型推論`が使えない時には`型注釈`を使う
+- 関数のパラメータには`型注釈`を使えばよい。`function testFunc(a: number, b: number)`
+
+### object型
+- 以下のようにobjectの型を定義することにより、`obj.`にすると`name`と`age`属性がeditor上に出てくるようになって（補完）使いやすくなる利点がある。
+```
+interface TypeObj = {
+  name: string,
+  age: number,
+}
+const obj: TypeObj = {
+  name: 'Jack',
+  age: 21,
+}
+```
+- 以下のように`object`型が存在はしているが、それは文字のまま`object`であることを示しているだけで、どの属性をもっているかまでには定義されていないので、属性にアクセスしようとするとエラーが出る。
+```
+const obj: object = {
+  name: 'Jack',
+  age: 21,
+}
+console.log(obj.name) <<< error
+```
