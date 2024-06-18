@@ -53,3 +53,11 @@ const obj: object = {
 }
 console.log(obj.name) <<< error
 ```
+
+### array型
+- 指定した型以外の型は入れれなくなる。
+```
+const arr: string[] = ['1', '2'] // OK
+const arr: string[] = ['1', 2] // NG
+
+```
