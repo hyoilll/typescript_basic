@@ -35,7 +35,7 @@
 
 ### object型
 - 以下のようにobjectの型を定義することにより、`obj.`にすると`name`と`age`属性がeditor上に出てくるようになって（補完）使いやすくなる利点がある。
-```
+```ts
 interface TypeObj = {
   name: string,
   age: number,
@@ -46,24 +46,52 @@ const obj: TypeObj = {
 }
 ```
 - 以下のように`object`型が存在はしているが、それは文字のまま`object`であることを示しているだけで、どの属性をもっているかまでには定義されていないので、属性にアクセスしようとするとエラーが出る。
-```
+```ts
 const obj: object = {
   name: 'Jack',
   age: 21,
 }
-console.log(obj.name) <<< error
+console.log(obj.name) // error
 ```
 
 ### array型
 - 指定した型以外の型は入れれなくなる。
-```
+```ts
 const arr: string[] = ['1', '2'] // OK
 const arr: string[] = ['1', 2] // NG
 ```
 
 ### tuble型
 - 色んな型を許容し、決まったタイプのみOK
-```
+```ts
 const book: [string, number, boolean] = ['hello', 1200, true] // OK
 const book: [string, number, boolean] = ['hello', 1200, true, false] // NG
+```
+
+### enum（列挙型）
+- 特定のまとまった型のみ受け入れる
+- enumのkeyは全て大文字にする
+- object使うバージョン
+```ts
+const CoffeeSize = {
+  SHORT: 'SHORT',
+  TALL: 'TALL',
+}
+const coffee = {
+  hot: true,
+  size: CoffeeSize.SHORT // string型
+}
+coffee.size = 'temp' // coffee.sizeはstring型なのでエラーにならない
+```
+- enum使うバージョン
+```ts
+enum CoffeeSize {
+  SHORT = 'SHORT',
+  TALL = 'TALL'
+}
+const coffee = {
+  hot: true,
+  size: CoffeeSize.SHORT // CoffeeSize型
+}
+coffee.size = 'temp' // coffee.sizeはCoffeeSize型型なのでエラーになる
 ```
