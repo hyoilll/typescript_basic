@@ -95,3 +95,11 @@ const coffee = {
 }
 coffee.size = 'temp' // coffee.sizeはCoffeeSize型型なのでエラーになる
 ```
+
+### any
+- なんでも受け入れる
+```ts
+let anything: any = true
+anything = 3
+anything = 'test'
+```
