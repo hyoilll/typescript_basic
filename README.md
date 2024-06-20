@@ -59,5 +59,11 @@ console.log(obj.name) <<< error
 ```
 const arr: string[] = ['1', '2'] // OK
 const arr: string[] = ['1', 2] // NG
+```
 
+### tuble型
+- 色んな型を許容し、決まったタイプのみOK
+```
+const book: [string, number, boolean] = ['hello', 1200, true] // OK
+const book: [string, number, boolean] = ['hello', 1200, true, false] // NG
 ```
